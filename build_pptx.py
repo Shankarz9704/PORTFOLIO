@@ -20,6 +20,7 @@ def create_presentation():
     TEXT_MUTED = RGBColor(148, 163, 184)  # #94a3b8
     CARD_BG = RGBColor(30, 41, 59)       # #1e293b
     WHITE = RGBColor(255, 255, 255)
+    LINK_COLOR = RGBColor(56, 189, 248)  # #38bdf8
 
     def add_background(slide, color=DARK_BG):
         bg = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), prs.slide_width, prs.slide_height)
@@ -51,63 +52,91 @@ def create_presentation():
         p2.font.color.rgb = TEXT_LIGHT
         p2.font.name = "Arial"
 
+    def add_clickable_link(paragraph, text, url, font_size=12, color=LINK_COLOR, bold=True):
+        run = paragraph.add_run()
+        run.text = text
+        run.font.size = Pt(font_size)
+        run.font.color.rgb = color
+        run.font.bold = bold
+        run.font.underline = True
+        run.hyperlink.address = url
+        return run
+
     # ================= SLIDE 1: Title Slide =================
     slide1 = prs.slides.add_slide(blank_layout)
     add_background(slide1, DARK_BG)
 
     # Accent decorative bar
-    bar = slide1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(2.2), Inches(0.15), Inches(3.2))
+    bar = slide1.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0.8), Inches(1.8), Inches(0.15), Inches(3.6))
     bar.fill.solid()
     bar.fill.fore_color.rgb = ACCENT_GREEN
     bar.line.fill.background()
 
     # Main Title
-    t_box = slide1.shapes.add_textbox(Inches(1.2), Inches(2.0), Inches(11), Inches(2.0))
+    t_box = slide1.shapes.add_textbox(Inches(1.2), Inches(1.6), Inches(11), Inches(2.2))
     tf = t_box.text_frame
     tf.word_wrap = True
     
     p = tf.paragraphs[0]
     p.text = "PORTFOLIO WEBSITE PRESENTATION"
-    p.font.size = Pt(36)
+    p.font.size = Pt(34)
     p.font.bold = True
     p.font.color.rgb = TEXT_LIGHT
     p.font.name = "Arial"
 
     p2 = tf.add_paragraph()
     p2.text = "Bapanapalli Shankar — Full Stack & AI Data Analyst"
-    p2.font.size = Pt(20)
+    p2.font.size = Pt(18)
     p2.font.color.rgb = ACCENT_GREEN
     p2.font.name = "Arial"
-    p2.space_before = Pt(10)
+    p2.space_before = Pt(8)
 
     p3 = tf.add_paragraph()
     p3.text = "Funngro Portfolio Website Creation Project Submission"
-    p3.font.size = Pt(15)
+    p3.font.size = Pt(14)
     p3.font.color.rgb = TEXT_MUTED
     p3.font.name = "Arial"
-    p3.space_before = Pt(15)
+    p3.space_before = Pt(10)
 
-    # Live Badge
-    badge = slide1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.2), Inches(5.4), Inches(8.5), Inches(0.8))
-    badge.fill.solid()
-    badge.fill.fore_color.rgb = CARD_BG
-    badge.line.color.rgb = ACCENT_GREEN
-    tf_b = badge.text_frame
-    tf_b.word_wrap = True
-    p_b = tf_b.paragraphs[0]
-    p_b.text = "🌐 Live URL: https://bapanapallishankarportfolio.netlify.app/"
-    p_b.font.size = Pt(14)
-    p_b.font.bold = True
-    p_b.font.color.rgb = WHITE
-    p_b.alignment = PP_ALIGN.CENTER
+    # Badge 1: Live Portfolio Website
+    badge1 = slide1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.2), Inches(4.8), Inches(10.8), Inches(0.75))
+    badge1.fill.solid()
+    badge1.fill.fore_color.rgb = CARD_BG
+    badge1.line.color.rgb = ACCENT_GREEN
+    tf_b1 = badge1.text_frame
+    tf_b1.word_wrap = True
+    p_b1 = tf_b1.paragraphs[0]
+    p_b1.alignment = PP_ALIGN.LEFT
+    r1 = p_b1.add_run()
+    r1.text = " 🌐  Live Website:  "
+    r1.font.size = Pt(13)
+    r1.font.bold = True
+    r1.font.color.rgb = WHITE
+    add_clickable_link(p_b1, "https://bapanapallishankarportfolio.netlify.app/", "https://bapanapallishankarportfolio.netlify.app/", font_size=13)
+
+    # Badge 2: Full Screen Web Presentation Link
+    badge2 = slide1.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.2), Inches(5.75), Inches(10.8), Inches(0.75))
+    badge2.fill.solid()
+    badge2.fill.fore_color.rgb = CARD_BG
+    badge2.line.color.rgb = ACCENT_BLUE
+    tf_b2 = badge2.text_frame
+    tf_b2.word_wrap = True
+    p_b2 = tf_b2.paragraphs[0]
+    p_b2.alignment = PP_ALIGN.LEFT
+    r2 = p_b2.add_run()
+    r2.text = " 🖥️  Full-Screen Web Presentation:  "
+    r2.font.size = Pt(13)
+    r2.font.bold = True
+    r2.font.color.rgb = WHITE
+    add_clickable_link(p_b2, "https://bapanapallishankarportfolio.netlify.app/presentation.html", "https://bapanapallishankarportfolio.netlify.app/presentation.html", font_size=13)
 
     # ================= SLIDE 2: Executive Summary =================
     slide2 = prs.slides.add_slide(blank_layout)
     add_background(slide2, DARK_BG)
-    add_header(slide2, "Executive Overview", "Project Summary & Live Deployment")
+    add_header(slide2, "Executive Overview", "Project Summary & Clickable Live Links")
 
-    # Card 1: Live Links
-    card1 = slide2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.8), Inches(5.6), Inches(4.8))
+    # Card 1: Clickable Live Links
+    card1 = slide2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.8), Inches(5.6), Inches(5.0))
     card1.fill.solid()
     card1.fill.fore_color.rgb = CARD_BG
     card1.line.color.rgb = ACCENT_BLUE
@@ -115,32 +144,32 @@ def create_presentation():
     tf1.word_wrap = True
     
     p = tf1.paragraphs[0]
-    p.text = "🌐 Live Deployments & Repository"
-    p.font.size = Pt(18)
+    p.text = "🌐 Direct Clickable Links"
+    p.font.size = Pt(16)
     p.font.bold = True
     p.font.color.rgb = ACCENT_GREEN
 
-    items = [
-        ("Netlify Live URL", "https://bapanapallishankarportfolio.netlify.app/"),
-        ("GitHub Pages", "https://shankarz9704.github.io/PORTFOLIO/"),
-        ("GitHub Repository", "https://github.com/Shankarz9704/PORTFOLIO"),
-        ("Submission PDF", "Portfolio_Website_Submission_Bapanapalli_Shankar.pdf")
+    links_list = [
+        ("🖥️ Full-Screen Web PPT", "https://bapanapallishankarportfolio.netlify.app/presentation.html"),
+        ("🚀 Netlify Live Website", "https://bapanapallishankarportfolio.netlify.app/"),
+        ("🌐 GitHub Pages Site", "https://shankarz9704.github.io/PORTFOLIO/"),
+        ("🐙 GitHub Repository", "https://github.com/Shankarz9704/PORTFOLIO"),
+        ("📄 Submission PDF Document", "https://github.com/Shankarz9704/PORTFOLIO/blob/main/Portfolio_Website_Submission_Bapanapalli_Shankar.pdf")
     ]
-    for label, val in items:
+
+    for label, url in links_list:
         p_l = tf1.add_paragraph()
-        p_l.text = f"• {label}:"
-        p_l.font.size = Pt(13)
-        p_l.font.bold = True
-        p_l.font.color.rgb = TEXT_LIGHT
-        p_l.space_before = Pt(10)
+        p_l.space_before = Pt(8)
+        r_lbl = p_l.add_run()
+        r_lbl.text = f"• {label}:\n   "
+        r_lbl.font.size = Pt(11)
+        r_lbl.font.bold = True
+        r_lbl.font.color.rgb = TEXT_LIGHT
         
-        p_v = tf1.add_paragraph()
-        p_v.text = f"   {val}"
-        p_v.font.size = Pt(12)
-        p_v.font.color.rgb = ACCENT_BLUE
+        add_clickable_link(p_l, url, url, font_size=10)
 
     # Card 2: Objectives Achieved
-    card2 = slide2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(1.8), Inches(5.7), Inches(4.8))
+    card2 = slide2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.8), Inches(1.8), Inches(5.7), Inches(5.0))
     card2.fill.solid()
     card2.fill.fore_color.rgb = CARD_BG
     card2.line.color.rgb = ACCENT_GREEN
@@ -149,7 +178,7 @@ def create_presentation():
 
     p = tf2.paragraphs[0]
     p.text = "🎯 Key Deliverables Achieved"
-    p.font.size = Pt(18)
+    p.font.size = Pt(16)
     p.font.bold = True
     p.font.color.rgb = ACCENT_GREEN
 
@@ -164,21 +193,20 @@ def create_presentation():
     for ach in achievements:
         p_a = tf2.add_paragraph()
         p_a.text = f"✓  {ach}"
-        p_a.font.size = Pt(13)
+        p_a.font.size = Pt(12)
         p_a.font.color.rgb = TEXT_LIGHT
-        p_a.space_before = Pt(10)
+        p_a.space_before = Pt(8)
 
     # ================= SLIDE 3: Developer Profile =================
     slide3 = prs.slides.add_slide(blank_layout)
     add_background(slide3, DARK_BG)
     add_header(slide3, "Candidate Profile", "Bapanapalli Shankar — Skills & Background")
 
-    # 3 Column Cards
     col_width = Inches(3.64)
     col_gap = Inches(0.4)
 
     # Col 1: Education
-    c1 = slide3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.8), col_width, Inches(4.8))
+    c1 = slide3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.8), col_width, Inches(5.0))
     c1.fill.solid()
     c1.fill.fore_color.rgb = CARD_BG
     c1.line.fill.background()
@@ -199,12 +227,12 @@ def create_presentation():
     for t in ed_text:
         p_sub = t1.add_paragraph()
         p_sub.text = f"• {t}"
-        p_sub.font.size = Pt(12)
+        p_sub.font.size = Pt(11.5)
         p_sub.font.color.rgb = TEXT_LIGHT
-        p_sub.space_before = Pt(10)
+        p_sub.space_before = Pt(8)
 
     # Col 2: Technical Skills
-    c2 = slide3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8) + col_width + col_gap, Inches(1.8), col_width, Inches(4.8))
+    c2 = slide3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8) + col_width + col_gap, Inches(1.8), col_width, Inches(5.0))
     c2.fill.solid()
     c2.fill.fore_color.rgb = CARD_BG
     c2.line.fill.background()
@@ -226,12 +254,12 @@ def create_presentation():
     for s in skills:
         p_sub = t2.add_paragraph()
         p_sub.text = f"• {s}"
-        p_sub.font.size = Pt(12)
+        p_sub.font.size = Pt(11.5)
         p_sub.font.color.rgb = TEXT_LIGHT
-        p_sub.space_before = Pt(10)
+        p_sub.space_before = Pt(8)
 
     # Col 3: Experience
-    c3 = slide3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8) + (col_width + col_gap)*2, Inches(1.8), col_width, Inches(4.8))
+    c3 = slide3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8) + (col_width + col_gap)*2, Inches(1.8), col_width, Inches(5.0))
     c3.fill.solid()
     c3.fill.fore_color.rgb = CARD_BG
     c3.line.fill.background()
@@ -245,7 +273,7 @@ def create_presentation():
 
     exps = [
         "Concentrix — Operations & Service Delivery Specialist",
-        "Altruist Customer Management — Customer Support & Process Associate",
+        "Altruist Customer Management — Customer Support Associate",
         "Rooman Technologies — Technical Training & Development",
         "TaPTaP — Technical Support & System Handling",
         "ExcelR — Data Science & Analytics Training"
@@ -253,18 +281,17 @@ def create_presentation():
     for e in exps:
         p_sub = t3.add_paragraph()
         p_sub.text = f"• {e}"
-        p_sub.font.size = Pt(12)
+        p_sub.font.size = Pt(11.5)
         p_sub.font.color.rgb = TEXT_LIGHT
-        p_sub.space_before = Pt(10)
+        p_sub.space_before = Pt(8)
 
     # ================= SLIDE 4: Architecture & Features =================
     slide4 = prs.slides.add_slide(blank_layout)
     add_background(slide4, DARK_BG)
     add_header(slide4, "Technical Architecture", "Website Structure & Design System")
 
-    # 4 Cards Grid (2x2)
     w_card = Inches(5.6)
-    h_card = Inches(2.2)
+    h_card = Inches(2.3)
 
     features = [
         ("📱 Fluid Responsive Layout", "Mobile-first responsive architecture using pure CSS Grid and Flexbox. Adapts seamlessly across smartphones, tablets, laptops, and ultra-wide displays."),
@@ -276,8 +303,8 @@ def create_presentation():
     coords = [
         (Inches(0.8), Inches(1.8)),
         (Inches(6.8), Inches(1.8)),
-        (Inches(0.8), Inches(4.3)),
-        (Inches(6.8), Inches(4.3))
+        (Inches(0.8), Inches(4.4)),
+        (Inches(6.8), Inches(4.4))
     ]
 
     for idx, (title, desc) in enumerate(features):
@@ -291,15 +318,15 @@ def create_presentation():
         
         p = tf_f.paragraphs[0]
         p.text = title
-        p.font.size = Pt(16)
+        p.font.size = Pt(15)
         p.font.bold = True
         p.font.color.rgb = ACCENT_GREEN if idx % 2 == 0 else ACCENT_BLUE
 
         p_d = tf_f.add_paragraph()
         p_d.text = desc
-        p_d.font.size = Pt(12)
+        p_d.font.size = Pt(11.5)
         p_d.font.color.rgb = TEXT_LIGHT
-        p_d.space_before = Pt(6)
+        p_d.space_before = Pt(4)
 
     # ================= SLIDE 5: Featured Projects =================
     slide5 = prs.slides.add_slide(blank_layout)
@@ -307,17 +334,17 @@ def create_presentation():
     add_header(slide5, "Projects Showcase", "Key Software & Analytics Projects")
 
     p_cards = [
-        ("📲 Mobile Recharge Application", "Full Stack Web Application", "Java, Spring Boot, MySQL, REST API", "Built an enterprise-grade online mobile recharge system featuring user authentication, plan management, and instant payment transaction status processing."),
-        ("📈 AI Data Analytics Dashboard", "Business Intelligence & Data Science", "Python, Pandas, SQL, BI Visuals", "Developed analytical pipelines and business intelligence dashboards to process structured datasets, perform statistical modeling, and generate actionable insights."),
-        ("🌐 Portfolio Website (Shankar.dev)", "Personal Brand & Funngro Submission", "HTML5, CSS3, ES6 JS, Netlify", "Designed and deployed a modern interactive portfolio platform featuring theme switching, project filters, submission documentation, and live hosting.")
+        ("📲 Mobile Recharge Application", "Full Stack Web Application", "Java, Spring Boot, MySQL, REST API", "Built an enterprise-grade online mobile recharge system featuring user authentication, plan management, and instant payment transaction status processing.", "https://github.com/Shankarz9704"),
+        ("📈 AI Data Analytics Dashboard", "Business Intelligence & Data Science", "Python, Pandas, SQL, BI Visuals", "Developed analytical pipelines and business intelligence dashboards to process structured datasets, perform statistical modeling, and generate actionable insights.", "https://github.com/Shankarz9704"),
+        ("🌐 Personal Portfolio Website", "Personal Brand & Funngro Submission", "HTML5, CSS3, ES6 JS, Netlify", "Designed and deployed a modern interactive portfolio platform featuring theme switching, project filters, submission documentation, and live hosting.", "https://bapanapallishankarportfolio.netlify.app/")
     ]
 
     p_width = Inches(3.64)
     p_gap = Inches(0.4)
 
-    for idx, (p_title, p_sub, p_tech, p_desc) in enumerate(p_cards):
+    for idx, (p_title, p_sub, p_tech, p_desc, p_url) in enumerate(p_cards):
         x = Inches(0.8) + idx * (p_width + p_gap)
-        card = slide5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, Inches(1.8), p_width, Inches(4.8))
+        card = slide5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, x, Inches(1.8), p_width, Inches(5.0))
         card.fill.solid()
         card.fill.fore_color.rgb = CARD_BG
         card.line.color.rgb = ACCENT_GREEN if idx == 2 else ACCENT_BLUE
@@ -326,35 +353,44 @@ def create_presentation():
 
         p = tf_p.paragraphs[0]
         p.text = p_title
-        p.font.size = Pt(16)
+        p.font.size = Pt(15)
         p.font.bold = True
         p.font.color.rgb = WHITE
 
         p_sub_t = tf_p.add_paragraph()
         p_sub_t.text = p_sub
-        p_sub_t.font.size = Pt(12)
+        p_sub_t.font.size = Pt(11.5)
         p_sub_t.font.bold = True
         p_sub_t.font.color.rgb = ACCENT_GREEN
         p_sub_t.space_before = Pt(4)
 
         p_tech_t = tf_p.add_paragraph()
         p_tech_t.text = f"Stack: {p_tech}"
-        p_tech_t.font.size = Pt(11)
+        p_tech_t.font.size = Pt(10.5)
         p_tech_t.font.color.rgb = ACCENT_BLUE
-        p_tech_t.space_before = Pt(6)
+        p_tech_t.space_before = Pt(4)
 
         p_desc_t = tf_p.add_paragraph()
         p_desc_t.text = p_desc
-        p_desc_t.font.size = Pt(12)
+        p_desc_t.font.size = Pt(11.5)
         p_desc_t.font.color.rgb = TEXT_LIGHT
-        p_desc_t.space_before = Pt(12)
+        p_desc_t.space_before = Pt(8)
+
+        p_link_t = tf_p.add_paragraph()
+        p_link_t.space_before = Pt(10)
+        r_link_lbl = p_link_t.add_run()
+        r_link_lbl.text = "🔗 Link: "
+        r_link_lbl.font.size = Pt(10.5)
+        r_link_lbl.font.bold = True
+        r_link_lbl.font.color.rgb = WHITE
+        add_clickable_link(p_link_t, "Access Project", p_url, font_size=10.5)
 
     # ================= SLIDE 6: Conclusion & Contact =================
     slide6 = prs.slides.add_slide(blank_layout)
     add_background(slide6, DARK_BG)
-    add_header(slide6, "Contact & Verification", "Developer Contact Details")
+    add_header(slide6, "Contact & Easy Access Links", "Developer Contact & Complete Link Directory")
 
-    card_c = slide6.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(2.2), Inches(1.8), Inches(8.933), Inches(4.8))
+    card_c = slide6.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.5), Inches(1.8), Inches(10.33), Inches(5.0))
     card_c.fill.solid()
     card_c.fill.fore_color.rgb = CARD_BG
     card_c.line.color.rgb = ACCENT_GREEN
@@ -363,30 +399,42 @@ def create_presentation():
 
     p = tf_c.paragraphs[0]
     p.text = "👨‍💻 Bapanapalli Shankar"
-    p.font.size = Pt(24)
+    p.font.size = Pt(22)
     p.font.bold = True
     p.font.color.rgb = WHITE
 
     p_sub = tf_c.add_paragraph()
     p_sub.text = "Python & Java Full Stack Developer | AI Data Analyst"
-    p_sub.font.size = Pt(15)
+    p_sub.font.size = Pt(14)
     p_sub.font.color.rgb = ACCENT_GREEN
-    p_sub.space_before = Pt(4)
+    p_sub.space_before = Pt(2)
 
     contacts = [
-        ("📧 Email", "shankarcode291439@gmail.com"),
-        ("📞 Phone", "+91 7842161185"),
-        ("🌐 Live Portfolio", "https://bapanapallishankarportfolio.netlify.app/"),
-        ("🐙 GitHub", "https://github.com/Shankarz9704"),
-        ("💼 LinkedIn", "https://www.linkedin.com/in/shankar9704")
+        ("🖥️ Full-Screen Web Presentation", "https://bapanapallishankarportfolio.netlify.app/presentation.html"),
+        ("🌐 Live Portfolio Website", "https://bapanapallishankarportfolio.netlify.app/"),
+        ("🐙 GitHub Repository", "https://github.com/Shankarz9704/PORTFOLIO"),
+        ("💼 LinkedIn Profile", "https://www.linkedin.com/in/shankar9704"),
+        ("📧 Email Contact", "mailto:shankarcode291439@gmail.com"),
+        ("📞 Phone", "+91 7842161185")
     ]
 
     for label, val in contacts:
         p_item = tf_c.add_paragraph()
-        p_item.text = f"{label}:  {val}"
-        p_item.font.size = Pt(14)
-        p_item.font.color.rgb = TEXT_LIGHT
-        p_item.space_before = Pt(12)
+        p_item.space_before = Pt(8)
+        
+        r_l = p_item.add_run()
+        r_l.text = f"{label}:  "
+        r_l.font.size = Pt(12)
+        r_l.font.bold = True
+        r_l.font.color.rgb = TEXT_LIGHT
+
+        if val.startswith("http") or val.startswith("mailto"):
+            add_clickable_link(p_item, val, val, font_size=12)
+        else:
+            r_v = p_item.add_run()
+            r_v.text = val
+            r_v.font.size = Pt(12)
+            r_v.font.color.rgb = LINK_COLOR
 
     output_path = r"d:\MOBILE RECHARGE APPLICATION\funngro\Portfolio_Presentation_Bapanapalli_Shankar.pptx"
     prs.save(output_path)

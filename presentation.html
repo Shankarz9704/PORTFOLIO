@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bapanapalli Shankar - Portfolio Presentation (PPT)</title>
+    <title>Bapanapalli Shankar - Full Screen Web Presentation</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -15,6 +15,7 @@
             --emerald: #059669;
             --emerald-light: #10b981;
             --blue: #2563eb;
+            --sky: #38bdf8;
             --text-light: #f8fafc;
             --text-muted: #94a3b8;
         }
@@ -162,26 +163,23 @@
             margin-top: 0.2rem;
         }
 
-        .badge-link {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--emerald), var(--blue));
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 8px;
+        a.click-link {
+            color: var(--sky);
+            text-decoration: underline;
             font-weight: 600;
-            text-decoration: none;
-            margin-top: 1rem;
-            transition: opacity 0.2s;
+            word-break: break-all;
         }
 
-        .badge-link:hover {
-            opacity: 0.9;
+        a.click-link:hover {
+            color: var(--emerald-light);
         }
 
         .controls {
             display: flex;
             gap: 1rem;
             margin-top: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn-btn {
@@ -196,19 +194,27 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-btn:hover {
+            opacity: 0.9;
         }
     </style>
 </head>
 <body>
 
     <div class="ppt-header">
-        <h1>📊 Bapanapalli Shankar — Portfolio Presentation</h1>
-        <p>Funngro Project Submission & Technical Presentation Deck</p>
+        <h1>📊 Bapanapalli Shankar — Full Screen Web Presentation</h1>
+        <p>Funngro Project Submission & Interactive Slide Presentation</p>
         <div class="controls">
-            <a href="Portfolio_Presentation_Bapanapalli_Shankar.pptx" download class="btn-btn">
-                <i class="fa-solid fa-file-powerpoint"></i> Download PPTX File
+            <button onclick="toggleFullScreen()" class="btn-btn" style="background: var(--emerald);">
+                <i class="fa-solid fa-expand"></i> Enter Full Screen Presentation
+            </button>
+            <a href="Portfolio_Presentation_Bapanapalli_Shankar.pptx" download class="btn-btn" style="background: var(--blue);">
+                <i class="fa-solid fa-file-powerpoint"></i> Download PowerPoint (.pptx)
             </a>
-            <a href="https://bapanapallishankarportfolio.netlify.app/" target="_blank" class="btn-btn" style="background: var(--blue);">
+            <a href="https://bapanapallishankarportfolio.netlify.app/" target="_blank" class="btn-btn" style="background: #475569;">
                 <i class="fa-solid fa-globe"></i> Open Live Portfolio
             </a>
         </div>
@@ -226,12 +232,19 @@
             </p>
             <div class="inner-box">
                 <h3><i class="fa-solid fa-award"></i> Funngro Project Submission</h3>
-                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
                     Official submission slide deck for the Funngro Portfolio Website Creation Project, detailing the system architecture, tech stack, deliverables, and live deployments.
                 </p>
-                <a href="https://bapanapallishankarportfolio.netlify.app/" target="_blank" class="badge-link">
-                    <i class="fa-solid fa-external-link-alt"></i> Live Site: https://bapanapallishankarportfolio.netlify.app/
-                </a>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <div>
+                        <b>🌐 Live Portfolio Website:</b> 
+                        <a href="https://bapanapallishankarportfolio.netlify.app/" target="_blank" class="click-link">https://bapanapallishankarportfolio.netlify.app/</a>
+                    </div>
+                    <div>
+                        <b>🖥️ Full Screen Web Presentation:</b> 
+                        <a href="https://bapanapallishankarportfolio.netlify.app/presentation.html" target="_blank" class="click-link">https://bapanapallishankarportfolio.netlify.app/presentation.html</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -239,22 +252,23 @@
         <div class="slide-card">
             <span class="slide-num">Slide 2 of 6</span>
             <div class="tag">Executive Overview</div>
-            <h2 class="slide-title">Project Summary & Deployment Links</h2>
+            <h2 class="slide-title">Project Summary & Easy Access Links</h2>
             <div class="grid-2">
                 <div class="inner-box">
-                    <h3><i class="fa-solid fa-globe"></i> Live Access</h3>
+                    <h3><i class="fa-solid fa-link"></i> Direct Clickable Links</h3>
                     <ul>
-                        <li><i class="fa-solid fa-check"></i> <b>Netlify:</b> bapanapallishankarportfolio.netlify.app</li>
-                        <li><i class="fa-solid fa-check"></i> <b>GitHub Pages:</b> shankarz9704.github.io/PORTFOLIO</li>
-                        <li><i class="fa-solid fa-check"></i> <b>GitHub Repo:</b> github.com/Shankarz9704/PORTFOLIO</li>
-                        <li><i class="fa-solid fa-check"></i> <b>PDF Submission:</b> Included in project root</li>
+                        <li><i class="fa-solid fa-check"></i> <b>Full Screen Web PPT:</b> <a href="https://bapanapallishankarportfolio.netlify.app/presentation.html" target="_blank" class="click-link">presentation.html</a></li>
+                        <li><i class="fa-solid fa-check"></i> <b>Netlify Live Site:</b> <a href="https://bapanapallishankarportfolio.netlify.app/" target="_blank" class="click-link">bapanapallishankarportfolio.netlify.app</a></li>
+                        <li><i class="fa-solid fa-check"></i> <b>GitHub Pages:</b> <a href="https://shankarz9704.github.io/PORTFOLIO/" target="_blank" class="click-link">shankarz9704.github.io/PORTFOLIO</a></li>
+                        <li><i class="fa-solid fa-check"></i> <b>GitHub Repository:</b> <a href="https://github.com/Shankarz9704/PORTFOLIO" target="_blank" class="click-link">github.com/Shankarz9704/PORTFOLIO</a></li>
+                        <li><i class="fa-solid fa-check"></i> <b>Submission PDF:</b> <a href="Portfolio_Website_Submission_Bapanapalli_Shankar.pdf" target="_blank" class="click-link">Submission PDF Document</a></li>
                     </ul>
                 </div>
                 <div class="inner-box">
                     <h3><i class="fa-solid fa-bullseye"></i> Key Objectives Met</h3>
                     <ul>
                         <li><i class="fa-solid fa-check"></i> Mobile-first fluid UI with CSS Grid & Flexbox</li>
-                        <li><i class="fa-solid fa-check"></i> Dark & Light visual theme engine</li>
+                        <li><i class="fa-solid fa-check"></i> Dark & Light Theme visual system</li>
                         <li><i class="fa-solid fa-check"></i> Dynamic animated headline typewriter</li>
                         <li><i class="fa-solid fa-check"></i> Interactive project category showcase filter</li>
                     </ul>
@@ -340,23 +354,26 @@
                 <div class="inner-box">
                     <h3><i class="fa-solid fa-mobile-button"></i> Mobile Recharge App</h3>
                     <p style="font-size: 0.85rem; color: var(--emerald-light); font-weight: 600;">Java, Spring Boot, MySQL</p>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5;">
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5; margin-bottom: 0.8rem;">
                         Full stack online recharge engine with user accounts, plan listing, and transaction processing.
                     </p>
+                    <a href="https://github.com/Shankarz9704" target="_blank" class="click-link">View Repository</a>
                 </div>
                 <div class="inner-box">
                     <h3><i class="fa-solid fa-chart-line"></i> AI Analytics Dashboard</h3>
                     <p style="font-size: 0.85rem; color: var(--blue); font-weight: 600;">Python, Pandas, SQL</p>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5;">
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5; margin-bottom: 0.8rem;">
                         Business intelligence pipeline processing structured datasets to output key performance metrics.
                     </p>
+                    <a href="https://github.com/Shankarz9704" target="_blank" class="click-link">View Repository</a>
                 </div>
                 <div class="inner-box">
                     <h3><i class="fa-solid fa-laptop-code"></i> Portfolio Website</h3>
                     <p style="font-size: 0.85rem; color: var(--emerald-light); font-weight: 600;">HTML5, CSS3, JS, Netlify</p>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5;">
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5; margin-bottom: 0.8rem;">
                         Modern portfolio site with theme engine, animated UI, submission documentation, and live hosting.
                     </p>
+                    <a href="https://bapanapallishankarportfolio.netlify.app/" target="_blank" class="click-link">Open Live Site</a>
                 </div>
             </div>
         </div>
@@ -365,21 +382,35 @@
         <div class="slide-card">
             <span class="slide-num">Slide 6 of 6</span>
             <div class="tag">Contact & Verification</div>
-            <h2 class="slide-title">Developer Contact Details</h2>
+            <h2 class="slide-title">Developer Contact & Easy Access Directory</h2>
             <div class="inner-box">
                 <h3><i class="fa-solid fa-user"></i> Bapanapalli Shankar</h3>
                 <p style="color: var(--emerald-light); font-weight: 600; margin-bottom: 1rem;">Python & Java Full Stack Developer | AI Data Analyst</p>
                 <ul>
-                    <li><i class="fa-solid fa-envelope"></i> <b>Email:</b> shankarcode291439@gmail.com</li>
-                    <li><i class="fa-solid fa-phone"></i> <b>Phone:</b> +91 7842161185</li>
-                    <li><i class="fa-solid fa-globe"></i> <b>Live Site:</b> https://bapanapallishankarportfolio.netlify.app/</li>
-                    <li><i class="fa-brands fa-github"></i> <b>GitHub:</b> github.com/Shankarz9704</li>
-                    <li><i class="fa-brands fa-linkedin"></i> <b>LinkedIn:</b> linkedin.com/in/shankar9704</li>
+                    <li><i class="fa-solid fa-desktop"></i> <b>Full Screen Presentation:</b> <a href="https://bapanapallishankarportfolio.netlify.app/presentation.html" target="_blank" class="click-link">https://bapanapallishankarportfolio.netlify.app/presentation.html</a></li>
+                    <li><i class="fa-solid fa-globe"></i> <b>Live Site:</b> <a href="https://bapanapallishankarportfolio.netlify.app/" target="_blank" class="click-link">https://bapanapallishankarportfolio.netlify.app/</a></li>
+                    <li><i class="fa-brands fa-github"></i> <b>GitHub Repo:</b> <a href="https://github.com/Shankarz9704/PORTFOLIO" target="_blank" class="click-link">https://github.com/Shankarz9704/PORTFOLIO</a></li>
+                    <li><i class="fa-brands fa-linkedin"></i> <b>LinkedIn:</b> <a href="https://www.linkedin.com/in/shankar9704" target="_blank" class="click-link">https://www.linkedin.com/in/shankar9704</a></li>
+                    <li><i class="fa-solid fa-envelope"></i> <b>Email:</b> <a href="mailto:shankarcode291439@gmail.com" class="click-link">shankarcode291439@gmail.com</a></li>
+                    <li><i class="fa-solid fa-phone"></i> <b>Phone:</b> <span style="color: var(--sky); font-weight: 600;">+91 7842161185</span></li>
                 </ul>
             </div>
         </div>
 
     </div>
 
+    <script>
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable full-screen mode: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+    </script>
 </body>
 </html>
