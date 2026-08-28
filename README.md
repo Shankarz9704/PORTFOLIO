@@ -6,7 +6,8 @@ Welcome to the official repository for **Bapanapalli Shankar's Personal Portfoli
 
 ## 🌐 Live Access & Preview
 
-- 🚀 **Live Demo**: [https://1e87a5dc583bf0.lhr.life](https://1e87a5dc583bf0.lhr.life)
+- 🚀 **Live Portfolio (Netlify)**: [https://bapanapallishankarportfolio.netlify.app/](https://bapanapallishankarportfolio.netlify.app/)
+- 🌐 **GitHub Pages**: [https://shankarz9704.github.io/PORTFOLIO/](https://shankarz9704.github.io/PORTFOLIO/)
 - 📄 **Submission PDF**: [Portfolio_Website_Submission_Bapanapalli_Shankar.pdf](./Portfolio_Website_Submission_Bapanapalli_Shankar.pdf)
 
 ---
