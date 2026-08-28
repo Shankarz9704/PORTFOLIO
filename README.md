@@ -8,6 +8,8 @@ Welcome to the official repository for **Bapanapalli Shankar's Personal Portfoli
 
 - 🚀 **Live Portfolio (Netlify)**: [https://bapanapallishankarportfolio.netlify.app/](https://bapanapallishankarportfolio.netlify.app/)
 - 🌐 **GitHub Pages**: [https://shankarz9704.github.io/PORTFOLIO/](https://shankarz9704.github.io/PORTFOLIO/)
+- 📊 **PowerPoint Presentation (.pptx)**: [Portfolio_Presentation_Bapanapalli_Shankar.pptx](./Portfolio_Presentation_Bapanapalli_Shankar.pptx)
+- 🖥️ **Interactive Web Slide Deck**: [presentation.html](./presentation.html)
 - 📄 **Submission PDF**: [Portfolio_Website_Submission_Bapanapalli_Shankar.pdf](./Portfolio_Website_Submission_Bapanapalli_Shankar.pdf)
 
 ---

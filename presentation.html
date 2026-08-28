@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bapanapalli Shankar - Portfolio Presentation (PPT)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --emerald: #059669;
+            --emerald-light: #10b981;
+            --blue: #2563eb;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .ppt-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .ppt-header h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            color: var(--emerald-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .ppt-header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .slides-container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .slide-card {
+            background-color: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--emerald-light), var(--blue));
+        }
+
+        .slide-num {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .tag {
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: var(--emerald-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .slide-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .inner-box {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .inner-box h3 {
+            font-size: 1.1rem;
+            color: var(--emerald-light);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .inner-box ul {
+            list-style-type: none;
+        }
+
+        .inner-box li {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 0.6rem;
+            line-height: 1.5;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .inner-box li i {
+            color: var(--emerald-light);
+            margin-top: 0.2rem;
+        }
+
+        .badge-link {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--emerald), var(--blue));
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .badge-link:hover {
+            opacity: 0.9;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .btn-btn {
+            background: var(--emerald);
+            color: #fff;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ppt-header">
+        <h1>📊 Bapanapalli Shankar — Portfolio Presentation</h1>
+        <p>Funngro Project Submission & Technical Presentation Deck</p>
+        <div class="controls">
+            <a href="Portfolio_Presentation_Bapanapalli_Shankar.pptx" download class="btn-btn">
+                <i class="fa-solid fa-file-powerpoint"></i> Download PPTX File
+            </a>
+            <a href="https://bapanapallishankarportfolio.netlify.app/" target="_blank" class="btn-btn" style="background: var(--blue);">
+                <i class="fa-solid fa-globe"></i> Open Live Portfolio
+            </a>
+        </div>
+    </div>
+
+    <div class="slides-container">
+
+        <!-- SLIDE 1 -->
+        <div class="slide-card">
+            <span class="slide-num">Slide 1 of 6</span>
+            <div class="tag">Title Slide</div>
+            <h2 class="slide-title" style="font-size: 2.2rem; margin-bottom: 0.5rem;">PORTFOLIO WEBSITE PRESENTATION</h2>
+            <p style="color: var(--emerald-light); font-size: 1.25rem; font-weight: 600; margin-bottom: 1.5rem;">
+                Bapanapalli Shankar — Full Stack & AI Data Analyst
+            </p>
+            <div class="inner-box">
+                <h3><i class="fa-solid fa-award"></i> Funngro Project Submission</h3>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6;">
+                    Official submission slide deck for the Funngro Portfolio Website Creation Project, detailing the system architecture, tech stack, deliverables, and live deployments.
+                </p>
+                <a href="https://bapanapallishankarportfolio.netlify.app/" target="_blank" class="badge-link">
+                    <i class="fa-solid fa-external-link-alt"></i> Live Site: https://bapanapallishankarportfolio.netlify.app/
+                </a>
+            </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="slide-card">
+            <span class="slide-num">Slide 2 of 6</span>
+            <div class="tag">Executive Overview</div>
+            <h2 class="slide-title">Project Summary & Deployment Links</h2>
+            <div class="grid-2">
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-globe"></i> Live Access</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> <b>Netlify:</b> bapanapallishankarportfolio.netlify.app</li>
+                        <li><i class="fa-solid fa-check"></i> <b>GitHub Pages:</b> shankarz9704.github.io/PORTFOLIO</li>
+                        <li><i class="fa-solid fa-check"></i> <b>GitHub Repo:</b> github.com/Shankarz9704/PORTFOLIO</li>
+                        <li><i class="fa-solid fa-check"></i> <b>PDF Submission:</b> Included in project root</li>
+                    </ul>
+                </div>
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-bullseye"></i> Key Objectives Met</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> Mobile-first fluid UI with CSS Grid & Flexbox</li>
+                        <li><i class="fa-solid fa-check"></i> Dark & Light visual theme engine</li>
+                        <li><i class="fa-solid fa-check"></i> Dynamic animated headline typewriter</li>
+                        <li><i class="fa-solid fa-check"></i> Interactive project category showcase filter</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="slide-card">
+            <span class="slide-num">Slide 3 of 6</span>
+            <div class="tag">Candidate Profile</div>
+            <h2 class="slide-title">Bapanapalli Shankar — Background & Skills</h2>
+            <div class="grid-3">
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-dot"></i> B.Tech in CSE (75%)</li>
+                        <li><i class="fa-solid fa-circle-dot"></i> Software Engineering</li>
+                        <li><i class="fa-solid fa-circle-dot"></i> Database Systems</li>
+                        <li><i class="fa-solid fa-circle-dot"></i> AI Analytics</li>
+                    </ul>
+                </div>
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-code"></i> Core Stack</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-dot"></i> Python & Java</li>
+                        <li><i class="fa-solid fa-circle-dot"></i> Spring Boot & REST APIs</li>
+                        <li><i class="fa-solid fa-circle-dot"></i> MySQL & SQL Server</li>
+                        <li><i class="fa-solid fa-circle-dot"></i> HTML5, CSS3, JavaScript</li>
+                    </ul>
+                </div>
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-briefcase"></i> Experience</h3>
+                    <ul>
+                        <li><i class="fa-solid fa-circle-dot"></i> Concentrix</li>
+                        <li><i class="fa-solid fa-circle-dot"></i> Altruist Management</li>
+                        <li><i class="fa-solid fa-circle-dot"></i> Rooman Tech</li>
+                        <li><i class="fa-solid fa-circle-dot"></i> ExcelR Analytics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4 -->
+        <div class="slide-card">
+            <span class="slide-num">Slide 4 of 6</span>
+            <div class="tag">Technical Architecture</div>
+            <h2 class="slide-title">System Features & Architecture</h2>
+            <div class="grid-2">
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-mobile-screen"></i> Fluid Responsive UI</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                        Structured with semantic HTML5 and clean CSS custom variables to render smoothly on devices of any screen width.
+                    </p>
+                </div>
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-moon"></i> Dark / Light Theme System</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                        Smooth theme toggle using custom CSS variables and browser localStorage persistence.
+                    </p>
+                </div>
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-terminal"></i> Animated Typewriter Header</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                        Custom ES6 JS typewriter cycling through developer roles seamlessly.
+                    </p>
+                </div>
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-layer-group"></i> Filterable Projects Gallery</h3>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+                        Dynamic DOM filtering by Full Stack, AI Data Analytics, Web Apps, and Security categories.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5 -->
+        <div class="slide-card">
+            <span class="slide-num">Slide 5 of 6</span>
+            <div class="tag">Projects Showcase</div>
+            <h2 class="slide-title">Key Projects & Applications</h2>
+            <div class="grid-3">
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-mobile-button"></i> Mobile Recharge App</h3>
+                    <p style="font-size: 0.85rem; color: var(--emerald-light); font-weight: 600;">Java, Spring Boot, MySQL</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5;">
+                        Full stack online recharge engine with user accounts, plan listing, and transaction processing.
+                    </p>
+                </div>
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-chart-line"></i> AI Analytics Dashboard</h3>
+                    <p style="font-size: 0.85rem; color: var(--blue); font-weight: 600;">Python, Pandas, SQL</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5;">
+                        Business intelligence pipeline processing structured datasets to output key performance metrics.
+                    </p>
+                </div>
+                <div class="inner-box">
+                    <h3><i class="fa-solid fa-laptop-code"></i> Portfolio Website</h3>
+                    <p style="font-size: 0.85rem; color: var(--emerald-light); font-weight: 600;">HTML5, CSS3, JS, Netlify</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.5;">
+                        Modern portfolio site with theme engine, animated UI, submission documentation, and live hosting.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 6 -->
+        <div class="slide-card">
+            <span class="slide-num">Slide 6 of 6</span>
+            <div class="tag">Contact & Verification</div>
+            <h2 class="slide-title">Developer Contact Details</h2>
+            <div class="inner-box">
+                <h3><i class="fa-solid fa-user"></i> Bapanapalli Shankar</h3>
+                <p style="color: var(--emerald-light); font-weight: 600; margin-bottom: 1rem;">Python & Java Full Stack Developer | AI Data Analyst</p>
+                <ul>
+                    <li><i class="fa-solid fa-envelope"></i> <b>Email:</b> shankarcode291439@gmail.com</li>
+                    <li><i class="fa-solid fa-phone"></i> <b>Phone:</b> +91 7842161185</li>
+                    <li><i class="fa-solid fa-globe"></i> <b>Live Site:</b> https://bapanapallishankarportfolio.netlify.app/</li>
+                    <li><i class="fa-brands fa-github"></i> <b>GitHub:</b> github.com/Shankarz9704</li>
+                    <li><i class="fa-brands fa-linkedin"></i> <b>LinkedIn:</b> linkedin.com/in/shankar9704</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
